@@ -2,84 +2,72 @@ doctype html
 html(lang="en")
     head
         meta(charset='UTF-8')
-        title Monster Scaler
+        title Erik Spitzer
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         meta(name="description" content="Tool for scaling monsters up or down in Dungeons and Dragons 5th edition.")
         link(rel='stylesheet' type='text/css' href='styles/global.min.css')
     body
-        #monster-selector.container
-            h2 Pick a monster
-            label(for='monster-select') Monster Template:
-            select#monster-select(name='monster-select')
-            label(for='cr-select') Challenge Rating:
-            select#cr-select(name='cr-select')
-                option(value='0') 0
-                option(value='0.125') 1/8
-                option(value='0.25') 1/4
-                option(value='0.5') 1/2
-                - var i = 0;
-                while i < 30
-                    option(value=++i)= i
-            #variant-wrapper 
-                label(for='variant-select') Variant:
-                select#variant-select(name='variant-select')
-            p If you don&apos;t see a particular monster listed look for a similar monster of a different CR. Some default monsters have been condensed as they are already very similar. A Dire Wolf is just a CR 1 wolf, for example.
-        #monster-stats.container
-            #stat-block
-                h2#monster-name
-                p#monster-type
-                include ../pug/tapered-rule.pug
-                p.property#armor-class Armor Class 
-                    span
-                p.property#hit-points Hit Points 
-                    span
-                p.property#speed Speed 
-                    span
-                include ../pug/tapered-rule.pug
-                #ability-scores
-                    div
-                        p STR
-                        p#monster-str
-                    div
-                        p DEX
-                        p#monster-dex
-                    div
-                        p CON
-                        p#monster-con
-                    div
-                        p INT
-                        p#monster-int
-                    div
-                        p WIS
-                        p#monster-wis
-                    div
-                        p CHA
-                        p#monster-cha
-                include ../pug/tapered-rule.pug
-                p.property#skills Skills 
-                    span
-                p.property#senses Senses 
-                    span
-                p.property#challenge-rating Challenge 
-                    span
-                include ../pug/tapered-rule.pug
-                #traits
-                h3 Actions
-                #attacks
-        #footer.container
-            p 
-                a(id="direct-link" href="/") Direct link
-            details
-                summary Using this tool
-                p This tool was created to scale certain mosnters up or down a few levels to make them useable as summons or wild shape forms for a wider range of levels. Feel free to use this calculator however you like, though caution is advised when scaling low CR monsters up to very high levels, or vice versa. While stats like hp, damage, and ability scores are scaled up and down the tool currently does not adjust things like resistances, immunities, or legendary abilities. Scaling a high CR monster down to low levels may not be appropriate for a low level party as its abilities would still make it very powerful, while a low CR creature scaled up to very high levels may have appropriate stats but would lack the resistances and immunities commonly found at the higher CR.
-            details
-                summary How it works 
-                p This tool works by comparing a creature's stats to a list of averages for its original CR, then applying that to averages for its new CR. For example, if a creature has 150% of the average strength for its original CR then it will have roughly 150% (rounded) of average strength at its scaled CR. Some of the averages were taken from the "Monster Statistics by Challenge Rating" table in the Dungeon Masters Guide; others were calculated by averaging the stats of many existing creatures.
-            p Creature statistics from the SRD are property of Wizards of the Coast and are used here in accordance with the 
-                a(href="https://media.wizards.com/2016/downloads/SRD-OGL_V1.1.pdf") OPEN GAME LICENSE
-                | .
-            p
-                a(href="https://github.com/Renmauzuo/monster-scaler") Fork me
-        script(src='https://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin='anonymous')
-        script(src='scripts/monsters.min.js')
-        script(src='scripts/global.min.js')
+        main
+            header
+                h1 Erik Spitzer
+                h2 Professional Software Engineer, Hobbyist Game Modder
+                p Hello! My name is Erik. I got started in software development many years ago with a Java class in high school. After that, I went to DePaul University where I graduated in 2009 with a degree in Computer Games Development. While at DePaul I worked with a variety of programming languages including C++, C#, AS3, and Python in platforms such as XNA, Unreal 3, and later Unity 3D.
+                p I'm currently employed as a senior engineer at a healthcare advertising agency in Chicago. I started out by making native iOS apps in Objective C but these days my  work is mostly node.js with a splash of ASP.net and the occasional bit of PHP and Python. 
+                p In my spare time I like to make mods and tools for some of my favorite games, all of which are open source and available to anyone who wants to use or modify them. Most of my portfolio, such as it is, can be found on #[a(href="https://github.com/Renmauzuo") Github] but you can find some of the highlights below:
+            section
+                h3 Monster Scaler
+                img(src="img/monster-scaler.png" alt="A portion of the statblock for a wolf scaled to CR 0." height="250")
+                p My latest project, this is a calculator for Dungeons and Dragons 5th Edition that takes an existing monster  and scales it up or down to a different Challenge Rating, or CR. Started because I play a druid who likes to summon and shape shift, and I was frustrated by the gaps in available creatures at certain CRs. At the moment it has only a few simple beasts, but I plan to expand it by adding more creatures, and potentially the ability for users to edit and create their own creatures.
+                p 
+                    a(href="https://github.com/Renmauzuo/monster-scaler") Github Repo
+                p 
+                    a(href="https://renmauzuo.github.io/monster-scaler/") Github Page
+            section
+                h3 Fantasy World Generator
+                img(src="img/world-generator.png" alt="A sample of randomly generated locations from the World Generator.")
+                p Inspired by #[a(href="https://orteil.dashnet.org/nested") Nested], this is a random generator that allows a user to generate a random fantasy world (or several). It starts by generating a high level parent node (which could be anything from a parent to an entire multiverse) with several children. By selecting children additional objects are randomly generated as needed.
+                p The goal here was twofold: To allow users to generate random content at any level that is required, from entire worlds to NPCs in a tavern, but also to allow them to manually enter existing content and use random generation to fill in the gaps. At the moment it is very far from complete, and is in need of many more objects, once I get back to it. While it was created with Dungeons and Dragons in mind, it is currently rule agnostic.
+                p 
+                    a(href="https://github.com/Renmauzuo/world-generator") Github Repo
+                p 
+                    a(href="https://renmauzuo.github.io/world-generator/") Github Page
+            section
+                h3 Spellbook Manager
+                p Also intended for Dungeons and Dragons 5th Edition (guess what I've been doing with my spare time when not on Github), this is a tool I created to help my very wizard heavy party identify spells they could share, and the associated costs. Spellbooks can be entered and the tool will list what spells can be copied into one book from the others, as well as the time and gold required to do so. Unlike most of my projects, this one is actually reasonably complete, if aesthetically lacking.
+                p 
+                    a(href="https://github.com/Renmauzuo/spellbookmanager") Github Repo
+                p 
+                    a(href="https://renmauzuo.github.io/spellbookmanager/") Github Page
+            section
+                h3 Everquest Faction Dance
+                p It's not all DND 5e. This is a tool I made to enable my Everquest completionism. Everquest is a game with hundreds of factions that have complex relationships with each other. Often making some factions like you more will damage your standing with others, but sometimes carefully choosing the methods you use to increase faction standings will allow you to work on some factons first, then repair others later. This is known as "faction dancing" in the community, and this was a tool I created to help determine the optimal path for factions that can be safely increased. It is missing many newer factions, and a few features I thought of after shelving it, but is populated enough to work for various older factions.
+                p 
+                    a(href="https://github.com/Renmauzuo/eqfactiondance") Github Repo
+                p 
+                    a(href="https://renmauzuo.github.io/eqfactiondance/") Github Page
+            section
+                h3 Bannerlord Disable Companion Donations
+                p It's not all Javascript either. This is a simple mod I made for Mount and Blade 2: Bannerlord which prevents the player's companions/relatives from donating their troops to settlements they enter. 
+                p 
+                    a(href="https://github.com/Renmauzuo/bannerlord-disable-companion-donations") Github Repo
+                p 
+                    a(href="https://www.nexusmods.com/mountandblade2bannerlord/mods/703") Nexus Mods Download
+            section 
+                h3 Warband Autotrader 
+                p A mod for Mount and Blade: Warband that makes it easier to buy and sell trade gods. Users can set thresholds for buy/sell prics for various goods, which are then automatically bought and sold when the player visits towns or villages.
+                p
+                    a(href="https://github.com/Renmauzuo/warbandautotrade") Github Repo
+            section
+                h3 Dickplomacy Reloaded (Contributor)
+                p Unlike newer games like Skyrim which let you pick and choose your mods, Warband modules are loaded one at a time. As a result, mod developers for Warband assemble many small mods into larger mod packs. I knew if I wanted my Autotrader mod to get a lot of attention, it had to be a part of one of the mod packs people used. Dickplomacy Reloaded was a prime candidate since it was one of the more popular open source mods (not just because of the adult content, it also has lots of interesting gameplay enhancements [but maybe it is a little bit because of the adult content]). With the lead developer's blessing I incorporated my Autotrader mod, and then once I had my hands in the code I fixed a few outstanding issues and modified some features.
+                p
+                    a(href="https://github.com/LilyModzStuff/warband_mod_source") Github Repo
+            footer
+                p
+                    a(href="https://www.linkedin.com/in/erikspitzer/") LinkedIn
+                p
+                    a(href="https://twitter.com/Renmauzuo") Twitter
+                p
+                    a(href="https://www.facebook.com/erik.spitzer/") Facebook
+                p
+                    a(href="https://www.instagram.com/tanthiusvanter/") Instagram

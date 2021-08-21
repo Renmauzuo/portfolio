@@ -17,6 +17,7 @@ const clean = () => promisedDel('docs');
 const cleanCSS = () => promisedDel('docs/**/*.css');
 const cleanHTML = () => promisedDel('docs/**/*.html');
 const cleanJS = () => promisedDel('docs/**/*.js');
+const cleanImg = () => promisedDel('docs/**/*.PNG');
 
 const html = () =>
 	gulp.src('src/pages/**/*.pug', { base: 'src/pages/' })
@@ -68,12 +69,17 @@ const js = () =>
 		.pipe(production($.eol()))
 		.pipe(gulp.dest('docs'));
 
-const build = gulp.parallel(css, js, html);
+const img = () =>
+	gulp.src('src/**/*.PNG', { base: 'src' })
+		.pipe(gulp.dest('docs'));
+
+const build = gulp.parallel(css, js, html, img);
 
 const watch = () => {
 	gulp.watch('src/**/*.scss', gulp.series(cleanCSS, css));
 	gulp.watch('src/**/*.pug', gulp.series(cleanHTML, html));
 	gulp.watch('src/**/*.js', gulp.series(cleanJS, js));
+	gulp.watch('src/**/*.PNG', gulp.series(cleanImg, img));
 };
 		
 

@@ -390,7 +390,6 @@ const monsterList = {
         alignment: alignmentUnaligned,
         lockedStats: {
             slug: 'tiger',
-            speed: 40,
             int: 3,
             skills: {
                 perception: skillRankProficient,
@@ -423,6 +422,7 @@ const monsterList = {
                 con: 15,
                 wis: 12,
                 cha: 8,
+                speed: 40,
                 attacks: {
                     bite: {
                         damageDice: 1,
