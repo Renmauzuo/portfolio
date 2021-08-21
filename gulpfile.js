@@ -73,7 +73,11 @@ const img = () =>
 	gulp.src('src/**/*.PNG', { base: 'src' })
 		.pipe(gulp.dest('docs'));
 
-const build = gulp.parallel(css, js, html, img);
+const cname = () =>
+    gulp.src('src/CNAME', { base: 'src' })
+        .pipe(gulp.dest('docs'));
+
+const build = gulp.parallel(css, js, html, img, cname);
 
 const watch = () => {
 	gulp.watch('src/**/*.scss', gulp.series(cleanCSS, css));
