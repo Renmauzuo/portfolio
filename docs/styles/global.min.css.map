@@ -1,1 +1,0 @@
-{"version":3,"sources":["styles/global.scss"],"names":[],"mappings":"AAAA,KAGC,WAAY,CAFZ,eAAgB,CAChB,SACY","file":"global.min.css","sourcesContent":["main {\r\n\tmax-width: 980px;\r\n\twidth: 90%;\r\n\tmargin: auto;\r\n}\r\n\r\n"]}
