@@ -1,7 +1,5 @@
-# Monster Scaler
-Tool for scaling monsters up (or down) in D&amp;D 5th edition.
-
-View it [here](https://renmauzuo.github.io/monster-scaler/)
+# Portfolio
+Just a little site for my portfolio. Nothing interesting here.
 
 ## Requirements
 
@@ -77,7 +75,3 @@ Begins watching files for changes.
 
 Cleans, rebuilds, and watches.
  
-
-Credit:  
-[This codepen](https://codepen.io/retractedhack/pen/gPLpWe) for some of the statblock CSS.  
-[This spreadsheet](https://docs.google.com/spreadsheets/d/1FIjaz6S0JXrXaCVhHEDeq-nH7xHzlqAx6inuRbDjhjU/edit#gid=1346812326) as a data source for determining some of the average monster stats
