@@ -1,0 +1,28 @@
+include _mixins.pug
+doctype html
+html(lang="en")
+    head
+        meta(charset='UTF-8')
+        title Erik Spitzer
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        meta(name="description" content="Tool for scaling monsters up or down in Dungeons and Dragons 5th edition.")
+        link(rel='stylesheet' type='text/css' href='styles/global.min.css')
+    body
+        nav 
+            ul
+                +navItem('Home','index')
+                +navItem('Everquest','everquest')
+                +navItem('D&D','dungeons-and-dragons')
+                +navItem('Mount and Blade','mount-and-blade')
+        main
+            block content
+            footer
+                p Feeling social?
+                p
+                    a(href="https://www.linkedin.com/in/erikspitzer/") LinkedIn
+                p
+                    a(href="https://twitter.com/Renmauzuo") Twitter
+                p
+                    a(href="https://www.facebook.com/erik.spitzer/") Facebook
+                p
+                    a(href="https://www.instagram.com/tanthiusvanter/") Instagram

@@ -1,1 +1,1 @@
-main{margin:auto;max-width:980px;width:90%}
+body{margin:0}main,nav{margin:auto;max-width:980px;width:90%}nav ul{background-color:#f1f1f1;font-size:0;list-style-type:none;margin:0;padding:0}nav ul li{display:inline-block}nav ul li a{border-right:1px solid #000;color:#000;display:block;font-size:16px;padding:8px 16px;text-decoration:none}nav ul li a.active{background-color:#add8e6}nav ul li a:hover{background-color:#a9a9a9;color:#f1f1f1}

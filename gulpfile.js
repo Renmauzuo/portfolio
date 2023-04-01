@@ -7,6 +7,7 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const rollup = require('gulp-better-rollup');
 const rollupBabel = require('rollup-plugin-babel');
+const path = require('path');
 
 const $ = gulpLoadPlugins();
 
@@ -21,7 +22,10 @@ const cleanImg = () => promisedDel('docs/**/*.PNG');
 
 const html = () =>
 	gulp.src('src/pages/**/*.pug', { base: 'src/pages/' })
-		.pipe($.pug())
+        .pipe($.foreach(function(stream, file) {
+            var fileName = path.basename(file.path, '.pug');
+            return stream.pipe($.pug({locals: {fileName: fileName}}))
+        }))
 		.pipe(development($.htmlBeautify({
 			'indent_size': 1,
 			'indent_char': '	',
