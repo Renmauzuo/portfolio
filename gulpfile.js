@@ -5,8 +5,6 @@ const postcssCombineSelectors = require('postcss-combine-duplicated-selectors');
 const postcssImport = require('postcss-import');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
-const rollup = require('gulp-better-rollup');
-const rollupBabel = require('rollup-plugin-babel');
 const path = require('path');
 const cachebust = require('gulp-cache-bust');
 
@@ -18,7 +16,6 @@ const production = $.environments.production;
 const clean = () => promisedDel('docs');
 const cleanCSS = () => promisedDel('docs/**/*.css');
 const cleanHTML = () => promisedDel('docs/**/*.html');
-const cleanJS = () => promisedDel('docs/**/*.js');
 const cleanImg = () => promisedDel('docs/**/*.PNG');
 
 const html = () =>
@@ -62,23 +59,6 @@ const css = () =>
 		.pipe($.eol())
 		.pipe(gulp.dest('docs'));
 
-
-const js = () =>
-	gulp.src('src/**/*.js', { base: 'src' })
-		.pipe(development($.sourcemaps.init()))
-		.pipe(rollup({
-			treeshake: false, //No treeshaking because some of the constants in mosnters.js aren't used until runtime
-			plugins: [rollupBabel()]
-		}, {
-			format: 'cjs'
-		}))
-		.pipe($.rename((path) => {
-			path.basename += '.min'
-		}))
-		.pipe(development($.sourcemaps.write('.')))
-		.pipe(production($.eol()))
-		.pipe(gulp.dest('docs'));
-
 const img = () =>
 	gulp.src('src/**/*.PNG', { base: 'src' })
 		.pipe(gulp.dest('docs'));
@@ -87,12 +67,11 @@ const cname = () =>
     gulp.src('src/CNAME', { base: 'src' })
         .pipe(gulp.dest('docs'));
 
-const build = gulp.series(gulp.parallel(css, js, html, img, cname), cacheBusting);
+const build = gulp.series(gulp.parallel(css, html, img, cname), cacheBusting);
 
 const watch = () => {
 	gulp.watch('src/**/*.scss', gulp.series(cleanCSS, css));
 	gulp.watch('src/**/*.pug', gulp.series(cleanHTML, html, cacheBusting));
-	gulp.watch('src/**/*.js', gulp.series(cleanJS, js));
 	gulp.watch('src/**/*.PNG', gulp.series(cleanImg, img));
 };
 		
