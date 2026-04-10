@@ -1,4 +1,5 @@
 include _mixins.pug
+- var iconSize = 32
 doctype html
 html(lang="en")
     head
@@ -6,7 +7,6 @@ html(lang="en")
         title Erik Spitzer
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         meta(name="description" content="My portfolio! Information about me and some of my projects.")
-        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
         link(rel='stylesheet' type='text/css' href='styles/global.min.css')
     body
         nav 
@@ -19,7 +19,12 @@ html(lang="en")
             block content
             footer
                 p Feeling social?
-                a.fa.fa-linkedin(href="https://www.linkedin.com/in/erikspitzer/" target="_blank" aria-label="LinkedIn Profile")
-                a.fa.fa-twitter(href="https://twitter.com/Renmauzuo" target="_blank" aria-label="Twitter Profile")
-                a.fa.fa-instagram(href="https://www.instagram.com/erik.r.spitzer/" target="_blank" aria-label="Instagram Profile")
+                a.social-link(href="https://www.linkedin.com/in/erikspitzer/" target="_blank" aria-label="LinkedIn Profile")
+                    img(src="img/linkedin.svg" alt="LinkedIn" width=iconSize height=iconSize)
+                a.social-link(href="https://twitter.com/Renmauzuo" target="_blank" aria-label="Twitter Profile")
+                    img(src="img/twitter.svg" alt="Twitter" width=iconSize height=iconSize)
+                a.social-link(href="https://www.instagram.com/erik.r.spitzer/" target="_blank" aria-label="Instagram Profile")
+                    img(src="img/instagram.svg" alt="Instagram" width=iconSize height=iconSize)
+                a.social-link(href="https://www.patreon.com/erikspitzer" target="_blank" aria-label="Patreon Profile")
+                    img(src="img/patreon.svg" alt="Patreon" width=iconSize height=iconSize)
                     

@@ -16,7 +16,7 @@ const production = $.environments.production;
 const clean = () => promisedDel('docs');
 const cleanCSS = () => promisedDel('docs/**/*.css');
 const cleanHTML = () => promisedDel('docs/**/*.html');
-const cleanImg = () => promisedDel('docs/**/*.PNG');
+const cleanImg = () => promisedDel('docs/**/*.{PNG,svg}');
 
 const html = () =>
 	gulp.src('src/pages/**/*.pug', { base: 'src/pages/' })
@@ -60,7 +60,7 @@ const css = () =>
 		.pipe(gulp.dest('docs'));
 
 const img = () =>
-	gulp.src('src/**/*.PNG', { base: 'src' })
+	gulp.src('src/**/*.{PNG,svg}', { base: 'src' })
 		.pipe(gulp.dest('docs'));
 
 const cname = () =>
@@ -72,7 +72,7 @@ const build = gulp.series(gulp.parallel(css, html, img, cname), cacheBusting);
 const watch = () => {
 	gulp.watch('src/**/*.scss', gulp.series(cleanCSS, css));
 	gulp.watch('src/**/*.pug', gulp.series(cleanHTML, html, cacheBusting));
-	gulp.watch('src/**/*.PNG', gulp.series(cleanImg, img));
+	gulp.watch('src/**/*.{PNG,svg}', gulp.series(cleanImg, img));
 };
 		
 
