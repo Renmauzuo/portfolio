@@ -8,8 +8,10 @@ const cssnano = require('cssnano');
 const path = require('path');
 const cachebust = require('gulp-cache-bust');
 const sass = require('gulp-sass')(require('sass'));
+const beautify = require('js-beautify').html;
 
 const $ = gulpLoadPlugins();
+const gulpTap = require('gulp-tap');
 
 const development = $.environments.development;
 const production = $.environments.production;
@@ -25,11 +27,14 @@ const html = () =>
             var fileName = path.basename(file.path, '.pug');
             return stream.pipe($.pug({locals: {fileName: fileName}}))
         }))
-		.pipe(development($.htmlBeautify({
-			'indent_size': 1,
-			'indent_char': '	',
-			'wrap_line_length': 0,
-			'end_with_newline': true
+		.pipe(development(gulpTap(function(file) {
+			file.contents = Buffer.from(beautify(file.contents.toString(), {
+				indent_size: 1,
+				indent_char: '	',
+				wrap_line_length: 0,
+				end_with_newline: true
+			}));
+			return file;
 		})))
 		.pipe(production($.htmlmin({ collapseWhitespace: true })))
 		.pipe(production($.eol()))
