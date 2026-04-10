@@ -23,10 +23,7 @@ const cleanImg = () => promisedDel('docs/**/*.{PNG,svg}');
 
 const html = () =>
 	gulp.src('src/pages/**/*.pug', { base: 'src/pages/' })
-        .pipe($.foreach(function(stream, file) {
-            var fileName = path.basename(file.path, '.pug');
-            return stream.pipe($.pug({locals: {fileName: fileName}}))
-        }))
+        .pipe($.pug({locals: {fileName: 'index'}}))
 		.pipe(development(gulpTap(function(file) {
 			file.contents = Buffer.from(beautify(file.contents.toString(), {
 				indent_size: 1,
