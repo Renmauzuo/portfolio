@@ -7,6 +7,7 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const path = require('path');
 const cachebust = require('gulp-cache-bust');
+const sass = require('gulp-sass')(require('sass'));
 
 const $ = gulpLoadPlugins();
 
@@ -42,10 +43,10 @@ const cacheBusting = () =>
 const css = () =>
 	gulp.src('src/**/*.scss', { base: 'src' })
 		.pipe(development($.sourcemaps.init()))
-		.pipe($.sass({
+		.pipe(sass({
 			indentType: 'space',
 			indentWidth: 2
-		}).on('error', $.sass.logError))
+		}).on('error', sass.logError))
 		.pipe($.postcss([
 			postcssImport(),
 			postcssCombineSelectors({ removeDuplicatedProperties: true }),
